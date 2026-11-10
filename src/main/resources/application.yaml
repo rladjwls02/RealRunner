@@ -1,3 +1,26 @@
 spring:
   application:
     name: realrunner
+  config:
+    import: "optional:file:./.env[.properties]"
+  profiles:
+    default: dev
+  datasource:
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  docker:
+    compose:
+      enabled: false
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health

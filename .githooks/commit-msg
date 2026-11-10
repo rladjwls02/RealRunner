@@ -1,0 +1,10 @@
+#!/bin/sh
+set -eu
+
+subject=$(head -n 1 "$1")
+if printf '%s\n' "$subject" | grep -Eq '^(Merge |Revert |fixup! |squash! )|^(feat|fix|refactor|test|docs|chore|style|infra): .+'; then
+  exit 0
+fi
+
+echo '커밋 제목은 type: 요약 형식으로 작성하세요. 관련 이슈가 있으면 끝에 #번호를 붙입니다.' >&2
+exit 1

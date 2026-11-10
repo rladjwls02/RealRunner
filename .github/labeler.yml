@@ -1,0 +1,35 @@
+feat:
+  - head-branch: ['^feature/']
+fix:
+  - head-branch: ['^fix/', '^hotfix/']
+refactor:
+  - head-branch: ['^refactor/']
+test:
+  - head-branch: ['^test/']
+docs:
+  - head-branch: ['^docs/']
+chore:
+  - head-branch: ['^chore/']
+infra:
+  - head-branch: ['^infra/']
+  - changed-files:
+      - any-glob-to-any-file: ['.github/workflows/**', 'compose.yaml', 'Dockerfile']
+
+'domain:identity':
+  - changed-files:
+      - any-glob-to-any-file: ['src/*/java/com/example/realrunner/identity/**']
+'domain:ingestion':
+  - changed-files:
+      - any-glob-to-any-file: ['src/*/java/com/example/realrunner/ingestion/**']
+'domain:activity':
+  - changed-files:
+      - any-glob-to-any-file: ['src/*/java/com/example/realrunner/activity/**']
+'domain:analytics':
+  - changed-files:
+      - any-glob-to-any-file: ['src/*/java/com/example/realrunner/analytics/**']
+'domain:prediction':
+  - changed-files:
+      - any-glob-to-any-file: ['src/*/java/com/example/realrunner/prediction/**']
+'domain:common':
+  - changed-files:
+      - any-glob-to-any-file: ['src/*/java/com/example/realrunner/global/**', 'build.gradle', 'src/*/resources/**']
