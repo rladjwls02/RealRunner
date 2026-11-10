@@ -1,0 +1,34 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+language: ko-KR
+tone_instructions: "존댓말로 문제·이유·수정 제안을 짧게 적습니다. 판단 근거가 부족한 부분은 질문으로 남깁니다."
+
+reviews:
+  profile: chill
+  request_changes_workflow: false
+  high_level_summary: true
+  poem: false
+  review_status: true
+  collapse_walkthrough: true
+  sequence_diagrams: false
+  auto_review:
+    enabled: true
+    drafts: false
+    base_branches:
+      - dev
+  path_filters:
+    - "!gradle/**"
+    - "!**/*.md"
+  path_instructions:
+    - path: "src/main/java/**"
+      instructions: |
+        Java 17, Spring Boot 4, Spring Data JPA, PostgreSQL 기준으로 검토합니다.
+        포맷과 import 순서는 Spotless에 맡깁니다.
+        identity, ingestion, activity, analytics, prediction 사이에서는 공개 api 계약만 사용합니다.
+        domain의 web·application·infra 의존, web의 infra 직접 참조, 모듈 간 순환 의존을 확인합니다.
+        데이터의 사용자 소유권, 누락값 처리, 단위·시간대, 재시도 시 중복 반영을 검토합니다.
+    - path: "src/test/java/**"
+      instructions: |
+        현재 CI의 테스트 범위는 ArchUnit입니다. 모듈 경계 검사에 우회 경로가 생기는지 검토합니다.
+
+chat:
+  auto_reply: true

@@ -1,0 +1,10 @@
+spring:
+  docker:
+    compose:
+      enabled: true
+      lifecycle-management: start-only
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5432/${DB_NAME}
+
+server:
+  address: 127.0.0.1

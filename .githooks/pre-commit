@@ -1,0 +1,13 @@
+#!/bin/sh
+set -eu
+
+if git diff --cached --quiet --diff-filter=ACMR -- '*.java'; then
+  exit 0
+fi
+
+if ! git diff --quiet -- '*.java'; then
+  echo 'Java 작업 트리에 스테이징되지 않은 변경이 있습니다. 포맷 검사 후 커밋할 범위를 다시 확인하세요.' >&2
+  exit 1
+fi
+
+exec ./gradlew spotlessJavaCheck
