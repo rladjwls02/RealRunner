@@ -45,12 +45,12 @@ ArchUnit은 모듈 간 공개 `api` 참조, 계층의 의존 방향, 모듈 간 
 | 병합 | 최신 `dev`로 rebase하고 CI 통과 후 **Rebase and merge**를 사용한다. 개인 저장소이므로 필수 사람 승인 수는 0이다. |
 | 릴리스 | `dev` → `main` PR에서 변경과 CI를 확인한다. 그 PR에서 검토한 `dev` 커밋 SHA를 `REVIEWED_DEV_SHA`에 넣고 아래 명령으로 fast-forward한다. |
 
-Codex가 변경에 기여한 커밋에는 메시지 끝에 `Co-authored-by`로 공동 작성자를 기록한다.
-
 ```sh
 git fetch origin
 git merge-base --is-ancestor "$REVIEWED_DEV_SHA" origin/dev &&
   git push origin "$REVIEWED_DEV_SHA:refs/heads/main"
 ```
+
+GPT가 변경에 기여한 커밋에는 `Co-authored-by: GPT <267193182+codex@users.noreply.github.com>`을 붙인다.
 
 CodeRabbit은 일반 `dev` PR을 한국어로 자동 리뷰하도록 설정한다. 처음 연결할 때 GitHub 앱 설치 또는 기존 설치의 저장소 선택에서 **RealRunner**를 지정한다. [CodeRabbit GitHub 앱](https://github.com/apps/coderabbitai)
