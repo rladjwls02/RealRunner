@@ -22,11 +22,17 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-webmvc'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'com.tngtech.archunit:archunit-junit6:1.5.1'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
 }
 
 spotless {
 	java {
-		target 'src/main/**/*.java'
+		target 'src/**/*.java'
 		palantirJavaFormat('2.102.0')
 		importOrder()
 		removeUnusedImports()
